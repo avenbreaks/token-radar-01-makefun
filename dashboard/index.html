@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar — pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header>
+  <div class="brand"><span class="dot"></span>TOKEN RADAR</div>
+  <p class="tag">Which protocol is worth farming next — and what to do about it.</p>
+  <p class="meta" id="meta">Loading snapshot…</p>
+</header>
+
+<section class="controls">
+  <input id="q" type="search" placeholder="Search a protocol…" aria-label="Search protocols">
+  <select id="cat" aria-label="Filter by category"><option value="">All categories</option></select>
+  <select id="status" aria-label="Filter by token status">
+    <option value="">All protocols</option>
+    <option value="pre-token">Pre-token only</option>
+    <option value="token trades">Token already trades</option>
+  </select>
+  <select id="sort" aria-label="Sort board">
+    <option value="value">Sort: implied value</option>
+    <option value="tvl">Sort: TVL</option>
+    <option value="growth">Sort: 7-day growth</option>
+    <option value="name">Sort: name A–Z</option>
+  </select>
+</section>
+
+<p class="count" id="count"></p>
+
+<main>
+  <table id="board">
+    <thead><tr>
+      <th>#</th><th>Protocol</th><th>Category</th><th>Chains</th>
+      <th class="num">TVL</th><th class="num">7d</th>
+      <th class="num">Implied value</th><th>Status</th>
+    </tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+
+  <section id="detail" class="detail" hidden>
+    <button id="closeDetail" type="button">✕ Close</button>
+    <h2 id="dName"></h2>
+    <p class="dsub" id="dSub"></p>
+    <div class="facts" id="dFacts"></div>
+    <h3>How the implied value is built</h3>
+    <p class="model" id="dModel"></p>
+    <h3>How to farm it</h3>
+    <ol class="steps" id="dSteps"></ol>
+  </section>
+</main>
+
+<footer>
+  <p>Implied value = TVL × the category's FDV/TVL multiple (median market-cap-per-TVL of token-bearing protocols in that category) × 7-day growth × a track-record factor. It is this board's own claim, never a prediction that a token will launch.</p>
+  <p>“Pre-token” means the protocol's DefiLlama record carries no token — not proof that it has none. Data: DefiLlama protocol snapshot, fetched 2026-11-14. Board built from that snapshot alone; no live prices.</p>
+</footer>
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
